@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>簡易ペイントツール</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="https://code.createjs.com/1.0.0/easeljs.min.js"></script>
+    <script src="https://blueimp.github.io/JavaScript-Load-Image/js/load-image.all.min.js"></script>
+    <script src="simplePaint.js"></script>
+    <style>
+        #canvasArea {
+            position: absolute;
+            width: 100%;
+            margin-top: 5px;
+        }
+
+        #paintArea {
+            width: 600px;
+            height: 400px;
+            border: medium solid black;
+        }
+
+        input[type="checkbox"] {
+            -webkit-appearance: none;
+            position: relative;
+            display: inline-block;
+            width: 24px;
+            height: 24px;
+            background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAvklEQVRIS62VWw6AIAwE5f6H1oA0gaWvBfw0MtNq7Zbn/Ho7omgo9SbhFLgcWXgngrHyUTQxdwX4WsxOdgQWvLKWTliBB5fvMEkYAQtvwqyAgQuznckItuGVHwmO4FEHx3BPcAVuCa7BNcFVOArwL9S2ZKaAaVeOU4T7xCpgmvNo1FFgHaYrx/0dbcexGzdgMEu8drUdT8GzVYWp5SUgduCNbvTnqx4MiUwxRGT/21QbTzPEKXqfYTOwWZj2/AdH/EMX6f77pwAAAABJRU5ErkJggg==);
+            background-size: contain;
+            border: medium solid black;
+        }
+
+        input[type="checkbox"]:checked {
+            -webkit-appearance: none;
+            position: relative;
+            display: inline-block;
+            width: 24px;
+            height: 24px;
+            background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAx0lEQVRIS7WVwQ6AIAxDJfHg/3+tBxMNJiMTu60D9aZAH2WulGXw2db13I+jRMvDCUigisv3CJIGaHEGkgIg8QhCAzxxD0IBGHELEgIy4gjiAkbEe4gJmBHXEAj4QlwgL8CX4rUJfwNIhzeAzpZZFzo+bgDKllFIn01FhGRgxgkKvuZAD45ArFSFNZBj06683Pci+/EX9ZcI4yR9H2QgkXh1bXZyVBNG3AT0NUDv0V1sRoVeiGrA7pwCWE3I7t49IstJRrzOvQDZAp0o9mK+CQAAAABJRU5ErkJggg==);
+            background-size: contain;
+            border: medium solid black;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- setting -->
+    <input id="paintType" type="checkbox" />
+    <input id="thickness" type="range" value="10" />
+    <input id="color" type="color" value="#000000" />
+    <button id="undo">←</button>
+    <button id="redo">→</button>
+    <button id="clear">クリア</button>
+    <button id="save">保存</button>
+    <input accept="image/*" id="selectImage" type="file" />
+    <!-- content -->
+    <div id="canvasArea" class="canvasArea">
+        <div id="content">
+            <canvas id="paintArea"></canvas>
+        </div>
+    </div>
+</body>
+
+</html>
